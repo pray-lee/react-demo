@@ -4,10 +4,11 @@ export default class InputDemo extends Component {
         super(props)
         this.state = {
             inputValue: '',
-            list: [1, 2]
+            list: []
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleClick = this.handleClick.bind(this)
+        this.handleDelClick = this.handleDelClick.bind(this)
     }
     handleChange(e) {
         this.setState({
@@ -20,21 +21,35 @@ export default class InputDemo extends Component {
         // this.setState({
         //     list: [...this.state.list, this.state.inputValue]
         // })
-        this.setState(prevState => ({
-            list: [...prevState.list, this.state.inputValue]
-        }))
+        if (this.state.inputValue) {
+            this.setState(prevState => ({
+                list: [...prevState.list, this.state.inputValue],
+                inputValue: ''
+            }))
+        } else {
+            alert('请输入')
+        }
+    }
+    handleDelClick(idx) {
+        // 这里使用临时变量存储list，因为官网禁止直接修改this.state, 如果直接修改this.state,会导致不去重新渲染
+        let tempList = this.state.list
+        tempList.splice(idx, 1)
+        this.setState({
+            list:this.state.list
+        })
     }
 
     render() {
         return (
             <Fragment>
                 <div>
-                    <input type="text" value={this.state.inputValue}/>
+                    <input type="text" value={this.state.inputValue} onChange={this.handleChange}/>
                     <button style={{fontSize:'20px'}} onClick={this.handleClick}>+</button>
                 </div>
                 <ul>
                     {
-                        this.state.list.map(item => <li>{item}</li>)
+                        // 参数传递需要使用bind()传递，不可以直接this.fn(xxx)
+                        this.state.list.map((item, index) => (<li key={index+item} onClick={this.handleDelClick.bind(this, index)}>{item} x</li>))
                     }
                 </ul>
             </Fragment>
