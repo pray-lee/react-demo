@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import Item from './input_li'
 export default class InputDemo extends Component {
     constructor(props) {
         super(props)
@@ -49,7 +50,7 @@ export default class InputDemo extends Component {
                 <ul>
                     {
                         // 参数传递需要使用bind()传递，不可以直接this.fn(xxx)
-                        this.state.list.map((item, index) => (<li key={index+item} onClick={this.handleDelClick.bind(this, index)}>{item} x</li>))
+                        this.state.list.map((item, index) => (<Item key={index+item} index={index} content={item} deleteItem={this.handleDelClick}/>))
                     }
                 </ul>
             </Fragment>
