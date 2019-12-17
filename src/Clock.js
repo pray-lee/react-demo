@@ -9,7 +9,7 @@ export default class Clock extends React.Component {
     }
     
     tick() {
-        this.setState(() => ({
+        this.setState((state, props) => ({
             date: new Date(),
             // a: '1'
         }))
@@ -27,7 +27,7 @@ export default class Clock extends React.Component {
         return (
             <div>
                 <h2>Hello React</h2>
-                <h3>It is {this.state.date.toLocaleTimeString()}</h3>
+                <h3>It is {this.state.date.toLocaleTimeString()}, day: {this.state.date.toLocaleDateString()}</h3>
             </div>
         )
     }

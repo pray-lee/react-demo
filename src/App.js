@@ -27,6 +27,7 @@ class TodoApp extends React.Component {
   }
 
   handleChange(e) {
+    console.log(this)
     this.setState({ text: e.target.value })
   }
 
