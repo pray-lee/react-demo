@@ -17,13 +17,7 @@ class TodoApp extends React.Component {
       <div>
         <h3>TODO</h3>
         <TodoList items={this.state.items}></TodoList>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="new-todo">
-            What needs to be done?<br />
-          </label>
-          <input id="new-todo" onChange={this.handleChange} value={this.state.text} />
-          <button>Add #{this.state.items.length + 1}</button>
-        </form>
+        <FormSubmit items={this.state.items} text={this.state.text} handleSubmit={this.handleSubmit} handleChange={this.handleChange}></FormSubmit>
       </div>
     )
   }
@@ -48,7 +42,19 @@ class TodoApp extends React.Component {
   }
 }
 
-const TodoList = (props) => {
+const FormSubmit = props => {
+  return (
+        <form onSubmit={props.handleSubmit}>
+          <label htmlFor="new-todo">
+            What needs to be done?<br />
+          </label>
+          <input id="new-todo" onChange={props.handleChange} value={props.text} />
+          <button>Add #{props.items.length + 1}</button>
+        </form>
+  )
+}
+
+const TodoList = props => {
   return (
     <ul>
       {props.items.map(item => (
