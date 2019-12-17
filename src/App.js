@@ -17,7 +17,11 @@ class TodoApp extends React.Component {
       <div>
         <h3>TODO</h3>
         <TodoList items={this.state.items}></TodoList>
-        <FormSubmit items={this.state.items} text={this.state.text} handleSubmit={this.handleSubmit} handleChange={this.handleChange}></FormSubmit>
+        <FormSubmit 
+          items={this.state.items} 
+          text={this.state.text} 
+          handleSubmit={this.handleSubmit} 
+          handleChange={this.handleChange}></FormSubmit>
       </div>
     )
   }

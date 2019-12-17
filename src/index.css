@@ -2,3 +2,8 @@ body {
     text-align: center;
     font-size: 18px
 }
+body > div{
+    border-top: 3px solid #333;
+    padding-top:30px;
+    margin-top: 30px
+}
