@@ -11,7 +11,6 @@ export default class Timer extends React.Component {
            seconds: state.seconds + 1
        }))
    }
-   
    componentDidMount() {
        this.interval = setInterval(() => this.tick(), 1000)
    }
