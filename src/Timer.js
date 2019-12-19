@@ -29,13 +29,6 @@ export default class Timer extends React.Component {
       <div aria-label={labelText}>
         timer components:
         <p>Seconds: {this.state.seconds}</p>
-        {/*same as vue template tag*/}
-        <React.Fragment>
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
-        </React.Fragment>
       </div>
     )
   }

@@ -11,7 +11,6 @@ export default class Clock extends React.Component {
     tick() {
         this.setState((state, props) => ({
             date: new Date(),
-            // a: '1'
         }))
     }
     
