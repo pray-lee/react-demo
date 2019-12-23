@@ -16,7 +16,7 @@ export const ShortFragment = () => {
   const a = 'shortFragment: "<>"<br/>'
   return (
     <>
-      <i dangerouslySetInnerHTML={{__html:a}}></i>
+      <i dangerouslySetInnerHTML={{__html: a}}></i>
       <i>11</i>
       <i>22</i>
       <i>33</i>
