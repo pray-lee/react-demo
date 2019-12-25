@@ -20,14 +20,13 @@ class ThemedButton extends React.Component {
     static contextType = ThemeContext
 
     render() {
-        let props = this.props
         let theme = this.context
+        let props = this.props
         return (
             <button
                 {...props}
                 style={{backgroundColor: theme.background}}
             >
-                Change Theme
             </button>
         )
     }
@@ -38,6 +37,7 @@ function Toolbar(props) {
         <ThemedButton
             onClick={props.changeTheme}
         >
+            Change Theme
         </ThemedButton>
     )
 }
@@ -68,7 +68,7 @@ export default class ContextDemo extends React.Component {
                     <Toolbar changeTheme={this.toggleTheme}/>
                 </ThemeContext.Provider>
                 <section>
-                    <ThemedButton changeTheme={this.toggleTheme}/>
+                    <ThemedButton />
                 </section>
             </React.Fragment>
         )
