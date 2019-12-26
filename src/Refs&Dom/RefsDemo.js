@@ -5,25 +5,30 @@ import React from "react";
 // 触发强制动画
 // 集成第三方dom库
 
-// there are two way to access dom node or react element
+// ref的值根据节点的类型而有所不同
+// . 当ref属性用于HTML元素时，对该节点的引用可以在ref的current属性中被访问
+// . 当ref属性用于自定义class组件时，ref对象接收组件的挂载实例作为其current属性
+// . 不能在函数组件上使用ref属性，因为函数组件没有实例
+
+// React会在组件挂载时给current属性传入DOM元素，并且在组件卸载时传入null值
+// ref会在componentDidMount 或 componentDidUpdate 生命周期钩子触发前更新
 
 // one
 // 为普通dom元素添加ref
 class CustomTextInput extends React.Component {
     constructor(props) {
         super(props);
-        // 创建一个ref存储textInput的dom元素
+        // 创建一个ref来存储textInput的dom元素
         this.textInput = React.createRef()
+        this.focusTextInput = this.focusTextInput.bind(this)
     }
-    focusTextInput = () => {
-        console.log(this.textInput)
-        // 当组件挂在完成时，react会给current属性传入dom元素，并且在组件卸载时传入null值
-        // ref会在componentDidMount或者componentDidUpdate生命周期勾子触发前更新
+    focusTextInput() {
+        // 通过创建的ref的current属性访问dom节点
         this.textInput.current.focus()
     }
     render() {
-        // 告诉react我们想把<input> ref关联到构造器里创建的'textInput'上
         return (
+            // 告诉React想把<input/> ref 关联到构造器创建的'textInput'上面来
             <div>
                 <input
                     type="text"
@@ -41,15 +46,15 @@ class CustomTextInput extends React.Component {
 
 export default CustomTextInput
 
-// 为class组件添加Ref
+// 为class组件添加Ref, 值得注意的是，子组件必须是由class方式创建的React元素
 class AutoFocusTextInput extends React.Component {
     constructor(props) {
         super(props);
         this.textInput = React.createRef()
     }
     componentDidMount() {
-        console.log(this.textInput)
         this.textInput.current.focusTextInput()
+        console.log(this.textInput)
     }
     render() {
         return (
