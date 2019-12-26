@@ -6,6 +6,7 @@ import Clock from './Clock';
 import ContextDemo from './Context/ContextDemo';
 import ErrorBoundaryTest from './ErrorBoundary/ErrorBoundaryTest';
 import FragmentDemo, { ShortFragment } from './Fragment';
+import CustomTextInput, {AutoFocusTextInput} from './Refs&Dom/RefsDemo';
 import './index.css'
 import LazyComponent from './LazyComponent'
 
@@ -17,4 +18,6 @@ ReactDOM.render(<ShortFragment />, document.getElementById('short-fragment'));
 ReactDOM.render(<LazyComponent />, document.getElementById('react-lazy-demo'));
 ReactDOM.render(<ContextDemo />, document.getElementById('context-demo'));
 ReactDOM.render(<ErrorBoundaryTest />, document.getElementById('errorBoundary-area'));
+ReactDOM.render(<CustomTextInput />, document.getElementById('refs-area'));
+ReactDOM.render(<AutoFocusTextInput />, document.getElementById('class-refs-area'));
 

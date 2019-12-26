@@ -15,7 +15,7 @@ class TestComponent extends React.Component {
         }))
     }
     render() {
-        if (this.state.counter === 5) {
+        if (this.state.counter === 1) {
            throw new Error('I have trouble...')
         }
         return <div onClick={this.handleClick}>I'm right...</div>
@@ -30,3 +30,4 @@ export default () => {
        </ErrorBoundary>
    )
 }
+//

@@ -19,7 +19,7 @@ class ErrorBoundary extends React.Component {
             // error path
             return (
                 <div>
-                    <h2>Something went wrong.</h2>
+                    <h2 style={{fontSize: 50 + 'px', color: '#ff5252'}}>Something went wrong.</h2>
                     <p>{this.state.error && this.state.error.toString()}</p>
                     <p>{this.state.errorInfo.componentStack}</p>
                 </div>
