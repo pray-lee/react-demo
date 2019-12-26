@@ -8,7 +8,13 @@ import React from "react";
 // ref的值根据节点的类型而有所不同
 // . 当ref属性用于HTML元素时，对该节点的引用可以在ref的current属性中被访问
 // . 当ref属性用于自定义class组件时，ref对象接收组件的挂载实例作为其current属性
-// . 不能在函数组件上使用ref属性，因为函数组件没有实例
+
+
+
+// . /**************不能在函数组件上使用ref属性，因为函数组件没有实例**************/
+
+
+
 
 // React会在组件挂载时给current属性传入DOM元素，并且在组件卸载时传入null值
 // ref会在componentDidMount 或 componentDidUpdate 生命周期钩子触发前更新
@@ -46,15 +52,21 @@ class CustomTextInput extends React.Component {
 
 export default CustomTextInput
 
-// 为class组件添加Ref, 值得注意的是，子组件必须是由class方式创建的React元素
+
+
+
+// 为class组件添加Ref, 值得注意的是，/**************子组件必须是由class方式创建的React元素******************/
+
+
+
 class AutoFocusTextInput extends React.Component {
     constructor(props) {
         super(props);
         this.textInput = React.createRef()
     }
     componentDidMount() {
+        console.log(this.textInput.current)
         this.textInput.current.focusTextInput()
-        console.log(this.textInput)
     }
     render() {
         return (
@@ -64,3 +76,93 @@ class AutoFocusTextInput extends React.Component {
 }
 
 export {AutoFocusTextInput}
+
+// 在函数组件内部使用ref
+function FunctionalCustomTextInput(props) {
+   let textInput = React.createRef()
+    const handleClick = () => {
+       textInput.current.focus()
+   }
+   return (
+       <div>
+           <input
+               type="text"
+               ref={textInput}
+           />
+           <input
+               type="button"
+               value="Focus the text input <Functional refs>"
+               onClick={handleClick}
+           />
+       </div>
+   )
+}
+export {FunctionalCustomTextInput}
+
+// 回调Refs
+class CallbackCustomTextInput extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    focusTextInput = () => {
+        if(this.textInput)
+            this.textInput.focus()
+    }
+    componentDidMount() {
+        this.focusTextInput()
+    }
+    render() {
+        return (
+            <div>
+                <input type="text"
+                    ref={element => this.textInput = element}
+                />
+                <input type="button"
+                       value="Focus the text input"
+                       onClick={this.focusTextInput}
+
+                />
+            </div>
+        )
+    }
+}
+
+// 函数式回调Refs
+const FunctionalCallbackCustomTextInput = () => {
+    let textInput = null
+    const onClick = () => {
+        textInput.focus()
+    }
+    return (
+        <div>
+            <input type="text"
+                ref={element => textInput = element}
+            />
+            <input type="button"
+                onClick={onClick}
+            />
+        </div>
+    )
+}
+
+// 函数式回调Refs 嵌套子组件
+const MyInput = props => {
+    return (
+        <input ref={props.inputRef}/>
+    )
+}
+
+const FunctionalNestCallbackCustomTextInput = () => {
+    let textInput = null
+    const onClick = () => {
+        textInput.focus()
+    }
+    return (
+       <div>
+           <MyInput inputRef={element => textInput = element}/>
+           <input type="button" onClick={onClick} value="focus the text input <nest functional refs>"/>
+       </div>
+    )
+}
+
+export {FunctionalNestCallbackCustomTextInput}

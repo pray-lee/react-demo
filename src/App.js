@@ -60,6 +60,7 @@ const FormSubmit = props => {
         </form>
     )
 }
+console.log(FormSubmit, 'FormSubmit')
 
 const TodoList = props => {
     return (
