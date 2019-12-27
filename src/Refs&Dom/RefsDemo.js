@@ -148,7 +148,7 @@ const FunctionalCallbackCustomTextInput = () => {
 // 函数式回调Refs 嵌套子组件
 const MyInput = props => {
     return (
-        <input ref={props.inputRef}/>
+        <input ref={props.inputRefTest}/>
     )
 }
 
@@ -159,7 +159,7 @@ const FunctionalNestCallbackCustomTextInput = () => {
     }
     return (
        <div>
-           <MyInput inputRef={element => textInput = element}/>
+           <MyInput inputRefTest={element => textInput = element}/>
            <input type="button" onClick={onClick} value="focus the text input <nest functional refs>"/>
        </div>
     )
