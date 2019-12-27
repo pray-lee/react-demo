@@ -128,22 +128,22 @@ class CallbackCustomTextInput extends React.Component {
 }
 
 // 函数式回调Refs
-const FunctionalCallbackCustomTextInput = () => {
-    let textInput = null
-    const onClick = () => {
-        textInput.focus()
-    }
-    return (
-        <div>
-            <input type="text"
-                ref={element => textInput = element}
-            />
-            <input type="button"
-                onClick={onClick}
-            />
-        </div>
-    )
-}
+// const FunctionalCallbackCustomTextInput = () => {
+//     let textInput = null
+//     const onClick = () => {
+//         textInput.focus()
+//     }
+//     return (
+//         <div>
+//             <input type="text"
+//                 ref={element => textInput = element}
+//             />
+//             <input type="button"
+//                 onClick={onClick}
+//             />
+//         </div>
+//     )
+// }
 
 // 函数式回调Refs 嵌套子组件
 const MyInput = props => {
