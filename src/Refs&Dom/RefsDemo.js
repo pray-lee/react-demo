@@ -165,4 +165,4 @@ const FunctionalNestCallbackCustomTextInput = () => {
     )
 }
 
-export {FunctionalNestCallbackCustomTextInput}
+export { FunctionalNestCallbackCustomTextInput }
